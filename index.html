@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hello!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<style>
+
+body {
+  background-image: url("https://static.wixstatic.com/media/995f27_ee41d8eb8031414497f38ef7af161863~mv2_d_4000_3000_s_4_2.jpg/v1/fill/w_1960,h_600,al_c,q_85,usm_0.33_1.00_0.00/995f27_ee41d8eb8031414497f38ef7af161863~mv2_d_4000_3000_s_4_2.webp");
+  background-repeat: no-repeat;
+  text-align: center;
+}
+/*
+div.video {
+  width: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+h1 {
+  color: #373fff;
+}
+*/
+
+/*  
+h1 {
+  font-family: "Bodoni MT", Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif; font-size: 36px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px;
+  text-align: center;
+  color: #278adb;
+}
+h2 {
+  font-family: "Bodoni MT", Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px;
+  text-align: center;
+  color: #278adb;
+}*/
+</style>
+ 
+        <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+
+  </head>  
+  <body>
+    <h1>Kincskereső Filmek</h1>
+    
+    <div id="video" class="video" style="display: table; margin: 0 auto;">
+    </div>
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div id="form">
+      <h2>
+      <form onsubmit="return embedVideo();">
+        <label>
+          <input name="youtubeLink" id="youtubeLink" type="text" maxlength="200" autocomplete="off"
+          required placeholder="YouTube link pl. https://www.youtube.com/watch?v=yND3-a-UnYs">
+        </label>
+        <button type="submit" id="submit-video">Készítsd el az oldalt!</button>
+      </form>
+
+      </h2>
+    </div>
+    <script>
+    function getJsonFromUrl(url) {
+      if(!url) url = location.search;
+      var query = url.substr(1);
+      var result = {};
+      query.split("&").forEach(function(part) {
+        var item = part.split("=");
+        result[item[0]] = decodeURIComponent(item[1]);
+      });
+      return result;
+    }
+    var videoId = getJsonFromUrl()['v']; 
+    if (videoId) {
+      document.getElementById("form").style.display = "none"; 
+      var iframe = document.createElement('iframe');
+      //iframe.style.display = "none";
+      iframe.id="ytplayer";
+      iframe.type="text/html";
+      iframe.width="640";
+      iframe.height="360";
+      iframe.src = "https://www.youtube.com/embed/" + videoId;
+      iframe.frameborder="0";
+      document.getElementById("video").appendChild(iframe);
+      document.getElementById("video").style.display = "display: table; margin: 0 auto;"; 
+    } else {
+      document.getElementById("form").style.visibility = "block"; 
+      document.getElementById("video").style.visibility = "none"; 
+    }
+    function embedVideo() {
+      var ytLink = document.getElementById("youtubeLink").value;
+      var searchIdx = ytLink.indexOf('?');
+      var search = ytLink.substr(searchIdx);
+      var params = getJsonFromUrl(search);
+      var videoId = params['v']
+      var port = window.location.port
+      port = port && (':' + port) || '';
+      var newUrl = window.location.protocol + "//" + window.location.hostname + port + "/?v=" + videoId;
+      console.log(newUrl);
+      window.location = newUrl;
+      return false;
+    }
+    </script>
+  </body>
+</html>
