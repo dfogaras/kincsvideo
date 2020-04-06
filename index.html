@@ -96,9 +96,11 @@ h2 {
       var params = getJsonFromUrl(search);
       var videoId = params['v']
       var port = window.location.port
-      port = port && (':' + port) || '';
-      var newUrl = window.location.protocol + "//" + window.location.hostname + port + "/?v=" + videoId;
-      console.log(newUrl);
+      
+      var newUrl = window.location.protocol + "//";
+      newUrl += window.location.hostname
+      newUrl += port && (':' + port) || '';
+      newUrl += window.location.pathname +"?v=" + videoId;
       window.location = newUrl;
       return false;
     }
