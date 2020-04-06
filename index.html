@@ -84,10 +84,10 @@ h2 {
       iframe.src = "https://www.youtube.com/embed/" + videoId;
       iframe.frameborder="0";
       document.getElementById("video").appendChild(iframe);
-      document.getElementById("video").style.display = "display: table; margin: 0 auto;"; 
+      //document.getElementById("video").style.display = "display: table; margin: 0 auto;"; 
     } else {
-      document.getElementById("form").style.visibility = "block"; 
-      document.getElementById("video").style.visibility = "none"; 
+      //document.getElementById("form").style.displ = "block"; 
+      document.getElementById("video").style.display = "none"; 
     }
     function embedVideo() {
       var ytLink = document.getElementById("youtubeLink").value;
