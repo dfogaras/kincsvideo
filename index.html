@@ -77,7 +77,8 @@ h2 {
       iframe.width="640";
       iframe.height="360";
       iframe.src = "https://www.youtube.com/embed/" + videoId;
-      iframe.frameborder="0";
+      iframe.frameborder = "0";
+      iframe.allow = "fullscreen";
       document.getElementById("video").appendChild(iframe);
       //document.getElementById("video").style.display = "display: table; margin: 0 auto;"; 
     } else {
