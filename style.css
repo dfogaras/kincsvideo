@@ -8,6 +8,13 @@ body {
   font-family: sans-serif;
   margin: 2em 1em;
   line-height: 1.5em;
+  background-image: url("https://static.wixstatic.com/media/995f27_ee41d8eb8031414497f38ef7af161863~mv2_d_4000_3000_s_4_2.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #eee;
+  text-align: center;
+
 }
 
 h1 {
