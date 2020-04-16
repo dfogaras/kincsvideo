@@ -4,30 +4,81 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: sans-serif;
-  margin: 2em 1em;
-  line-height: 1.5em;
-  background-image: url("https://static.wixstatic.com/media/995f27_ee41d8eb8031414497f38ef7af161863~mv2_d_4000_3000_s_4_2.jpg");
-  background-position: center center;
+
+body, html {
+  height: 100%;
+}
+
+
+.background-image {
+  /* The image used */
+  background-image: url("/kincsvideo/kincshatter.jpg");
+
+  /* Add the blur effect */
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #eee;
-  text-align: center;
+}
 
+/* Position text in the middle of the page/image */
+.background-text {
+  color: #089de3;
+  font-weight: bold;
+  font-size: 2.0vw;
+  position: absolute; 
+  top: 9%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+
+.foreground {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: grey;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 50%;
+  padding: 0px;
+  text-align: center;
+}
+
+#form {
+  width: 40%;
+}
+
+#video {
+  height: 70%;
+  width: 70%;
 }
 
 h1 {
   /*font-style: italic; */
-  color: #373fff;
   max-width: calc(100% - 5rem);
   line-height: 1.1;
 }
 
+/*
 div {
   margin: auto;
   width: 50%;
 }
+*/
 
 form {
   background-color: #eee;
@@ -35,7 +86,9 @@ form {
   margin: auto;
   grid-gap: 1em;
   padding: 1em;
-  max-width: 40ch;
+  max-width: 100%;
+  width: 100%;
+  /*height: 100%;*/
 }
 
 input {
@@ -49,7 +102,7 @@ input {
 }
 
 form button {
-  background-color: #bbbbf2;
+  background-color: #089de3;
   border: 2px solid currentColor;
   border-radius: .25em;
   cursor: pointer;

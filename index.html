@@ -1,61 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Kincs Film</title>
+    <title>Kincskereső Film</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-<style>
-
-/*
-div.video {
-  width: 250px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  text-align: center;
-}
-
-h1 {
-  color: #373fff;
-}
-*/
-
-/*  
-h1 {
-  font-family: "Bodoni MT", Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif; font-size: 36px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px;
-  text-align: center;
-  color: #278adb;
-}
-h2 {
-  font-family: "Bodoni MT", Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px;
-  text-align: center;
-  color: #278adb;
-}*/
-</style>
- 
         <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/kincsvideo/style.css">
 
   </head>  
   <body>
-    <h1>Kincskereső Filmek</h1>
-    
-    <div id="video" class="video" style="display: table; margin: 0 auto;">
+
+    <div class="background-image"></div>
+    <div class="background-text">
+      <h1>Kincskereső Film</h1>
+    </div>
+    <div id="video" class="foreground">
     </div>
     <!-- include the Glitch button to show what the webpage is about and
           to make it easier for folks to view source and remix -->
-    <div id="form">
-      <h2>
-      <form onsubmit="return embedVideo();">
-        <label>
-          <input name="youtubeLink" id="youtubeLink" type="text" maxlength="200" autocomplete="off"
-          required placeholder="YouTube link pl. https://www.youtube.com/watch?v=yND3-a-UnYs">
-        </label>
-        <button type="submit" id="submit-video">Készítsd el az oldalt!</button>
-      </form>
+    <div id="form" class="foreground">
+        <form onsubmit="return embedVideo();">
+          Másold ide a keretezendő YouTube video linkjét.
+          Készítsd el a keretezett oldalt.
+          Utána a keretezett oldal linkjét küldd tovább.
 
-      </h2>
+          <label>
+            <input name="youtubeLink" id="youtubeLink" type="text" maxlength="200" autocomplete="off"
+            required placeholder="YouTube link pl. https://www.youtube.com/watch?v=yND3-a-UnYs">
+          </label>
+          <button type="submit" id="submit-video">Készítsd el az oldalt!</button>
+      </form>
     </div>
+
     <script>
     function getJsonFromUrl(url) {
       if(!url) url = location.search;
@@ -72,10 +49,15 @@ h2 {
       document.getElementById("form").style.display = "none"; 
       var iframe = document.createElement('iframe');
       //iframe.style.display = "none";
+
       iframe.id="ytplayer";
       iframe.type="text/html";
-      iframe.width="640";
-      iframe.height="360";
+
+      iframe.position = "absolute";
+      iframe.top = "0"; 
+      iframe.left = "0";
+      iframe.width="100%";
+      iframe.height="100%";
       iframe.src = "https://www.youtube.com/embed/" + videoId;
       iframe.frameborder = "0";
       iframe.allow = "fullscreen";
